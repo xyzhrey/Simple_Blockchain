@@ -188,12 +188,12 @@ blockchain=Blockchain()
 
 @app.route('/')
 def index():
-    return render_template('./template/index.html')
+    return render_template('./index.html')
 
 
 @app.route('/configure')
 def configure():
-    return render_template('./template/configure.html')
+    return render_template('./configure.html')
 
 
 
@@ -217,7 +217,7 @@ def new_transaction():
         return jsonify(response), 201
     
 
-@app.route('/transactions/get', method=['GET'])
+@app.route('/transactions/get', methods=['GET'])
 def get_transactions():
     transactions=blockchain.transactions
 
@@ -247,7 +247,7 @@ def mine():
         'message': 'new block forged',
         "block_number":block['block_number'],
         'transactions':block['transactions'],
-        'nonce':block[nonce],
+        'nonce':block['nonce'],
         'previous_hash': block['previous_hash']
     }
 
